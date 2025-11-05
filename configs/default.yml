@@ -1,0 +1,45 @@
+# 路径统一
+paths:
+  data_dir: data
+  raw_dir: data/raw
+  processed_dir: data/processed
+  external_dir: data/external
+  experiments_dir: experiments
+  reports_dir: reports
+
+# 实验与随机性
+experiment:
+  name: baseline
+  seed: 42
+  cv_folds: 5
+  test_size: 0.2
+
+# 任务设置
+task:
+  type: classification            # or regression / clustering
+  target: diabetes                # 你的标签列名
+  positive_label: 1               # 二分类正类定义（便于指标一致）
+
+# 预处理策略（可选）
+preprocess:
+  impute:
+    numeric: median
+    categorical: most_frequent
+  scale_numeric: true
+  one_hot_max_categories: 30      # 超过则做截断/合并
+  drop_leaky_columns: ["post_outcome_flag"]
+
+# 模型与超参（可切换）
+model:
+  type: XGBClassifier             # LogisticRegression / RandomForestClassifier ...
+  params:
+    n_estimators: 300
+    max_depth: 5
+    learning_rate: 0.1
+    subsample: 0.8
+    colsample_bytree: 0.8
+
+# 阈值与评估偏好
+evaluation:
+  decision_threshold: 0.5
+  metrics: [accuracy, precision, recall, f1, roc_auc]
