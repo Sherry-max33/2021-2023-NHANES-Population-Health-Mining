@@ -2,6 +2,9 @@
 .vscode/
 .idea/
 
+*.db
+anaconda_projects/db
+/
 # Python
 __pycache__/
 *.pyc
