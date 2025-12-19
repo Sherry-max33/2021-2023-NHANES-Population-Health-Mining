@@ -34,3 +34,6 @@ models/
 # Experiments cache
 mlruns/
 wandb/
+
+# Presentation slides
+reports/*.pptx
